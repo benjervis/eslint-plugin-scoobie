@@ -8,18 +8,26 @@ const parserOptions = {
 
 const ruleTester = new RuleTester({ parserOptions });
 
-const submoduleImport = "import { SmartTextLink } from 'scoobie/src';";
+const srcSubmoduleImport = "import { SmartTextLink } from 'scoobie/src';";
 const regularImport = "import { SmartTextLink } from 'scoobie';";
+const typesImport = "import 'scoobie/types';";
+const nonSrcSubmoduleImport =
+  "import { robotoHtml, robotoMonoHtml } from 'scoobie/typography';";
 const nonSeekScoobieImport =
   "import { SmartTextLink } from 'other-scoobie-package/sub/module';";
 
-const rule = rules['no-submodule-imports'];
+const rule = rules['no-src-import'];
 
-ruleTester.run('no-submodule-import', rule, {
-  valid: [regularImport, nonSeekScoobieImport],
+ruleTester.run('no-src-import', rule, {
+  valid: [
+    regularImport,
+    nonSeekScoobieImport,
+    typesImport,
+    nonSeekScoobieImport,
+  ],
   invalid: [
     {
-      code: submoduleImport,
+      code: srcSubmoduleImport,
       errors: [{ messageId: 'submodule' }],
       output: regularImport,
     },

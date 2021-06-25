@@ -1,8 +1,10 @@
 # eslint-plugin-scoobie
 
-Designed to work with projects using [scoobie](https://github.com/seek-oss/scoobie), this plugin detects when a component is being imported from a submodule.
+Designed to work with projects using [scoobie](https://github.com/seek-oss/scoobie), this plugin detects when a component is being imported from the `src` submodule.
 
 VSCode's autoimport has a strong tendency to pull from 'scoobie/src' rather than just 'scoobie', for some reason. This lint rule will error when it happens, and can also autofix.
+
+There are some [valid reasons](https://github.com/seek-oss/scoobie#srcscoobiedts) to import from certain submodules in scoobie, and this should leave those alone.
 
 ## Example
 
@@ -12,6 +14,12 @@ import { SmartTextLink } from 'scoobie/src';
 
 // fixes to
 import { SmartTextLink } from 'scoobie';
+
+// ok
+import 'scoobie/types';
+
+// also ok
+import { robotoHtml, robotoMonoHtml } from 'scoobie/typography';
 ```
 
 ## Usage
@@ -25,7 +33,7 @@ Then in your eslint config
 ```
 plugins: ['@bjervis/scoobie'],
 rules: {
-  '@bjervis/scoobie/no-submodule-import': 2,
+  '@bjervis/scoobie/no-src-import': 2,
 },
 ```
 
@@ -39,7 +47,7 @@ module.exports = {
     ...skuConfig,
     plugins: ['@bjervis/scoobie'],
     rules: {
-      '@bjervis/scoobie/no-submodule-import': 2,
+      '@bjervis/scoobie/no-src-import': 2,
     },
   }),
 }

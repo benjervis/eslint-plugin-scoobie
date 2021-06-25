@@ -1,5 +1,5 @@
 export const rules = {
-  'no-submodule-imports': {
+  'no-src-import': {
     meta: {
       docs: {
         description:
@@ -17,7 +17,7 @@ export const rules = {
         ImportDeclaration: (node) => {
           const importSource = node.source.value;
 
-          if (importSource.startsWith('scoobie/')) {
+          if (importSource === 'scoobie/src') {
             return context.report({
               node,
               messageId: 'submodule',
