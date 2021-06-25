@@ -2,7 +2,7 @@
 
 Designed to work with projects using [scoobie](https://github.com/seek-oss/scoobie), this plugin detects when a component is being imported from a submodule.
 
-VSCode's autoimport has a string tendency to pull from 'scoobie/src' rather than just 'scoobie', for some reason. This lint rule will error when it happens, and can also autofix.
+VSCode's autoimport has a strong tendency to pull from 'scoobie/src' rather than just 'scoobie', for some reason. This lint rule will error when it happens, and can also autofix.
 
 ## Example
 
