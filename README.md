@@ -4,6 +4,16 @@ Designed to work with projects using [scoobie](https://github.com/seek-oss/scoob
 
 VSCode's autoimport has a string tendency to pull from 'scoobie/src' rather than just 'scoobie', for some reason. This lint rule will error when it happens, and can also autofix.
 
+## Example
+
+```typescript
+// error
+import { SmartTextLink } from 'scoobie/src';
+
+// fixes to
+import { SmartTextLink } from 'scoobie';
+```
+
 ## Usage
 
 ```bash
